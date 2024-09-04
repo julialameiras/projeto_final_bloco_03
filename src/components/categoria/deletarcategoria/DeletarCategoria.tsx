@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Categoria from '../../../models/categoria/Categoria';
 import { buscar, deletar } from '../../../services/Service';
 import { RotatingLines } from 'react-loader-spinner';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
 
 function DeletarCategoria() {
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
@@ -27,17 +28,19 @@ function DeletarCategoria() {
         navigate("/")
     }
 
-    async function DeletarCategoria() {
+    async function deletarCategoria() {
         setIsLoading(true)
         try{
             await deletar(`/categorias/${id}`)
+            ToastAlerta("Produto deletado com sucesso", "sucesso");
         }catch(error){
-            alert("Erro ao deletar")
+            ToastAlerta("Erro ao deletar produto", "erro");
             console.log(error)
         }
         setIsLoading(false)
         retornar();
     }
+
   return (
     <div className='container w-1/3 mx-auto'>
     <h1 className='text-4xl text-center my-4'>Deletar Categoria</h1>
@@ -46,10 +49,10 @@ function DeletarCategoria() {
 
     <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
         <header className='py-2 px-6 bg-green-600 text-white font-bold text-2xl'>Categoria</header>
-        <p className='p-8 text-3xl bg-slate-200 h-full'>{categoria.nome}</p>
+        <p className='p-8 text-3xl bg-green-200 h-full'>{categoria.nome}</p>
         <div className="flex">
             <button className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2' onClick={retornar}>Não</button>
-            <button className='w-full text-slate-100 bg-green-400 hover:bg-green-600 flex items-center justify-center' onClick={DeletarCategoria}>
+            <button className='w-full text-slate-100 bg-green-400 hover:bg-green-600 flex items-center justify-center' onClick={deletarCategoria}>
             {isLoading ?
                     <RotatingLines
                     strokeColor="white"
