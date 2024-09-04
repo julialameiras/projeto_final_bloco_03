@@ -7,6 +7,8 @@ import FormularioCategoria from './components/categoria/formulariocategoria/Form
 import DeletarCategoria from './components/categoria/deletarcategoria/DeletarCategoria';
 import ListaCategoria from './components/categoria/listacategoria/ListaCategoria';
 import ListaProduto from './components/produto/listaproduto/ListaProduto';
+import FormularioProduto from './components/produto/formularioproduto/FormularioProduto';
+import DeletarProduto from './components/produto/deletarproduto/DeletarProduto';
 
 function App() {
 
@@ -17,6 +19,9 @@ function App() {
         <div className='min-h-[80vh]'>
           <Routes>
           <Route path='/produtos' element={<ListaProduto/>} />
+          <Route path='/cadastroProduto' element={<FormularioProduto />} />
+          <Route path='/editarProduto/:id' element={<FormularioProduto/>}/>
+          <Route path='/deletarProduto/:id' element={<DeletarProduto/>}/>
           <Route path='/categorias' element={<ListaCategoria/>} />
           <Route path='/cadastroCategoria' element={<FormularioCategoria />} />
           <Route path='/editarCategoria/:id' element={<FormularioCategoria/>}/>

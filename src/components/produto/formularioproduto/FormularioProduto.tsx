@@ -13,7 +13,7 @@ function FormularioProduto() {
     const { id } = useParams<{ id: string }>();
 
     async function buscarPorId(id: string) {
-        await buscar(`/Produtos/${id}`, setProduto
+        await buscar(`/produtos/${id}`, setProduto
         );
     }
 

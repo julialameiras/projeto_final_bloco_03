@@ -3,6 +3,7 @@ import Categoria from "../../../models/categoria/Categoria";
 import { buscar } from "../../../services/Service";
 import CardCategoria from "../cardcategoria/CardCategoria";
 import { ThreeCircles } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 function ListaCategoria() {
     const [categorias, setCategorias] = useState<Categoria[]>([])
@@ -32,6 +33,17 @@ function ListaCategoria() {
                 wrapperClass=""
                 />
             )}
+
+            <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-24 my-6">
+            <div className="flex justify-end mb-6">
+                <Link to="/cadastroCategoria">
+                    <button className="py-2 px-6 bg-green-600 text-white rounded-lg border border-green-700 hover:bg-green-700 transition duration-300">
+                        Nova Categoria
+                    </button>
+                </Link>
+            </div>
+            </div>
+            
             <div className="flex justify-center w-full my-4">
                 <div className="container flex flex-col">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
