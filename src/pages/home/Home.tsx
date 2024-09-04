@@ -33,9 +33,9 @@ function Home() {
             
             {/* Product Card */}
             <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-              <img src="https://via.placeholder.com/300" alt="Produto 3" className="w-full h-48 object-cover rounded-t-lg mb-4" />
-              <h3 className="text-2xl font-semibold mb-2">Produto 3</h3>
-              <p className="text-gray-700 mb-4 flex-grow">Descrição detalhada do produto 3 com todas as informações necessárias.</p>
+              <img src="https://premiumanabolizantes.com.br/wp-content/uploads/2023/02/Rivotril-1.jpg.webp" alt="Produto 3" className="w-full h-48 object-cover rounded-t-lg mb-4" />
+              <h3 className="text-2xl font-semibold mb-2">Rivotril 1mg 30 comp Roche</h3>
+              <p className="text-gray-700 mb-4 flex-grow">Rivotril® é indicado para tratar crises epilépticas e espasmos infantis (Síndrome de West). Rivotril® também é indicado para: Transtornos de ansiedade; Como ansiolítico em geral; Distúrbio do pânico com ou sem medo de espaços abertos; Fobia social (medo de situações como falar em público).</p>
               <a href="#" className="text-green-700 font-semibold hover:underline mt-auto">Comprar Agora</a>
             </div>
           </div>

@@ -1,11 +1,11 @@
 import { ChangeEvent, useEffect, useState } from 'react'
-import Categoria from '../../../models/categoria/Categoria';
+import Produto from '../../../models/produto/Produto';
 import { atualizar, buscar, cadastrar } from '../../../services/Service';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 
-function FormularioCategoria() {
-    const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
+function FormularioProduto() {
+    const [produto, setProduto] = useState<Produto>({} as Produto)
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ function FormularioCategoria() {
     const { id } = useParams<{ id: string }>();
 
     async function buscarPorId(id: string) {
-        await buscar(`/categorias/${id}`, setCategoria
+        await buscar(`/Produtos/${id}`, setProduto
         );
     }
 
@@ -24,8 +24,8 @@ function FormularioCategoria() {
     }, [id])
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
-        setCategoria({
-            ...categoria,
+        setProduto({
+            ...produto,
             [e.target.name]: e.target.value
         })
     }
@@ -34,26 +34,26 @@ function FormularioCategoria() {
         navigate("/")
     }
 
-    async function gerarNovaCategoria(e: ChangeEvent<HTMLFormElement>) {
+    async function gerarNovoProduto(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         setIsLoading(true)
 
         if (id !== undefined) {
             try {
-                await atualizar(`/categorias`, categoria, setCategoria)
-                alert('categoria atualizado com sucesso')
+                await atualizar(`/produtos`, produto, setProduto)
+                alert('Produto atualizado com sucesso')
                 retornar()
             } catch (error: any) {
-                alert('Erro ao atualizar a categoria')
+                alert('Erro ao atualizar o produto')
 
             }
         } else {
             try {
-                await cadastrar(`/categorias`, categoria, setCategoria
+                await cadastrar(`/produtos`, produto, setProduto
                 )
-                alert('categoria cadastrado com sucesso')
+                alert('Produto cadastrado com sucesso')
             } catch (error: any) {
-                alert('Erro ao cadastrar a categoria')
+                alert('Erro ao cadastrar o produto')
             }
         }
         setIsLoading(false)
@@ -63,18 +63,18 @@ function FormularioCategoria() {
     return (
         <div className="container flex flex-col items-center justify-center mx-auto">
             <h1 className="text-4xl text-center my-8">
-                {id === undefined ? 'Cadastre uma nova categoria' : 'Editar categoria'}
+                {id === undefined ? 'Cadastre um novo produto' : 'Editar produto'}
             </h1>
 
-            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovaCategoria}>
+            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoProduto}>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="nome">Nome da categoria</label>
+                    <label htmlFor="nome">Nome do Produto</label>
                     <input
                         type="text"
                         placeholder="Nome"
                         name='nome'
                         className="border-2 border-slate-700 rounded p-2"
-                        value={categoria.nome || ""}
+                        value={produto.nome || ""}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
@@ -95,4 +95,4 @@ function FormularioCategoria() {
     )
 }
 
-export default FormularioCategoria
+export default FormularioProduto
